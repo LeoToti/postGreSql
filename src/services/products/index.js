@@ -75,7 +75,7 @@ router
   .route("/product/:id/upload")
   .put(async (req, res, next) => {
     try {
-      const product = await Product.findByPk(req.params.id)
+      const product = await Product.findByPk(req.params.id).update({ where: { imageUrl: req.body } })
       
       res.send(product)
     } catch (e) {
