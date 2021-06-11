@@ -8,7 +8,7 @@ router
   .route("/")
   .get(async (req, res, next) => {
     try {
-     const products = await Product.findAll({include:Category} )
+     const products = await Product.findAll({include:Category,Review}, { limit: 10 } )
      res.send(products)
     
     } catch (e) {
@@ -65,6 +65,18 @@ router
   .get(async (req, res, next) => {
     try {
       const product = await Product.findByPk(req.params.id).Review
+      res.send(product)
+    } catch (e) {
+      console.log(e);
+      next(e);
+    }
+  });
+  router
+  .route("/product/:id/upload")
+  .put(async (req, res, next) => {
+    try {
+      const product = await Product.findByPk(req.params.id)
+      
       res.send(product)
     } catch (e) {
       console.log(e);
