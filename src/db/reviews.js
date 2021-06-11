@@ -14,7 +14,8 @@ module.exports = (sequelize, DataTypes) =>{
           type: DataTypes.FLOAT,
           required: true,
         },
-      });
+      },
+      { timestamps: true });
       Review.associate = (models) => {
         Review.belongsTo(models.Product)
         

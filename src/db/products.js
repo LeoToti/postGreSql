@@ -33,7 +33,8 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.FLOAT,
       required: true,
     },
-  });
+  },
+  { timestamps: true });
   Product.associate = (models) => {
    
    
